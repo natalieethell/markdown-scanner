@@ -54,6 +54,12 @@ namespace ApiDocs.Validation
         public CodeBlockType BlockType { get; set; }
 
         /// <summary>
+        /// Information specific to graph
+        /// </summary>
+        [JsonProperty("ags", NullValueHandling=NullValueHandling.Ignore)]
+        public AggregatorGraphService AGS { get; set; }
+
+        /// <summary>
         /// Specify the name of properties in the schema which are optional
         /// </summary>
         [JsonProperty("optionalProperties", NullValueHandling=NullValueHandling.Ignore)]
@@ -262,6 +268,19 @@ namespace ApiDocs.Validation
 
         [JsonProperty("target")]
         public TargetType Target { get; set; }
+    }
+
+    public class AggregatorGraphService
+    {
+        public bool AddressContainsEntitySetSegment { get; set; }
+        public string AddressUrl { get; set; }
+        public string AddressUrlMSA { get; set; }
+        public bool CreateVirtualNavigationProperty { get; set; }
+        public string InstantOnUrl { get; set; } 
+        public bool IsMaster { get; set; }
+        public string KeyPropertyPath { get; set; }
+        public string TargetEntityType { get; set; }
+        public string VirtualNavigationPropertyName { get; set; }
     }
 
     public enum TargetType
