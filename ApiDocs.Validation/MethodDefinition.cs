@@ -294,7 +294,7 @@ namespace ApiDocs.Validation
                 return;
 
 
-            if (this.RequestMetadata.Target == TargetType.Action || this.RequestMetadata.Target == TargetType.Function)
+            if (this.RequestMetadata.Target == TargetType.Action /*|| this.RequestMetadata.Target == TargetType.Function*/)
             {
                 // Add the ActionPrefix to the last path component of the URL
                 AddPrefixToLastUrlComponent(request, account.Transformations.Request.Actions.Prefix);
