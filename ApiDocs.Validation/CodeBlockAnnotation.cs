@@ -151,6 +151,16 @@ namespace ApiDocs.Validation
         [JsonProperty("tags", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Tags { get; set; }
 
+        /// Specifies the properties that exist in specific api versions (e.g. internal, beta, etc.)
+        /// </summary>
+        [JsonProperty("properties", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Dictionary<string,PropertyTags> Properties { get; set; }
+
+        /// Specifies the properties that exist in specific api versions (e.g. internal, beta, etc.)
+        /// </summary>
+        [JsonProperty("navigationProperties", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Dictionary<string,PropertyTags> NavigationProperties { get; set; }
+
         [JsonProperty("baseType", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string BaseType { get; set; }
 
@@ -281,6 +291,14 @@ namespace ApiDocs.Validation
         public string KeyPropertyPath { get; set; }
         public string TargetEntityType { get; set; }
         public string VirtualNavigationPropertyName { get; set; }
+    }
+
+    public class PropertyTags
+    {
+        public bool Add { get; set; }
+        public AggregatorGraphService AGS { get; set; }
+        public string ApiVersions { get; set; }
+        public bool ContainsTarget { get; set; }
     }
 
     public enum TargetType
