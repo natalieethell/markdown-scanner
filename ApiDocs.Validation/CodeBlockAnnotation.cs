@@ -98,6 +98,39 @@ namespace ApiDocs.Validation
         public List<string> MethodName { get; set; }
 
         /// <summary>
+        /// The name of the action.
+        /// </summary>
+        [JsonProperty("actionName", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string ActionName { get; set; }
+
+        /// <summary>
+        /// The name of the function.
+        /// </summary>
+        [JsonProperty("functionName", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string FunctionName { get; set; }
+
+        /// <summary>
+        /// The parameters passed into the function or action
+        /// </summary>
+        [JsonProperty("parameter", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public Dictionary<string,string> Parameters { get; set; }
+
+        /// <summary>
+        /// Indicates that the function is bound.
+        /// </summary>
+        [JsonProperty("bound", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public bool IsBound { get; set; }
+
+        /// <summary>
+        /// Indicates that the function is composable.
+        /// </summary>
+        [JsonProperty("composable", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public bool IsComposable { get; set; }
+
+        [JsonProperty("add", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public bool Add { get; set; }
+
+        /// <summary>
         /// Indicates that the response is expected to be an error response.
         /// </summary>
         [JsonProperty("expectError", DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -271,13 +304,14 @@ namespace ApiDocs.Validation
 
         /// <summary>
         /// Indicates that a resource is extensible with additional properties that 
-        /// may not be defined in the documtnation.
+        /// may not be defined in the documentation.
         /// </summary>
         [JsonProperty("openType")]
         public bool IsOpenType { get; set; }
 
         [JsonProperty("target")]
         public TargetType Target { get; set; }
+
     }
 
     public class AggregatorGraphService
