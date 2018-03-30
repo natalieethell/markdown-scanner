@@ -31,6 +31,7 @@ namespace ApiDocs.Validation
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using System.Collections.Generic;
+    using ApiDocs.Validation.OData.Transformation;
 
     public class CodeBlockAnnotation
     {
@@ -93,6 +94,24 @@ namespace ApiDocs.Validation
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Ignore)]
         [JsonConverter(typeof(SingleOrArrayConverter<string>))]
         public List<string> MethodName { get; set; }
+
+        /// <summary>
+        /// The name of the action.
+        /// </summary>
+        [JsonProperty("actionName", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string ActionName { get; set; }
+
+        /// <summary>
+        /// The name of the function.
+        /// </summary>
+        [JsonProperty("functionName", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string FunctionName { get; set; }
+
+        /// <summary>
+        /// Information stored about the function.
+        /// </summary>
+        [JsonProperty("functionModification", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public FunctionModification FunctionModification { get; set; }
 
         /// <summary>
         /// Indicates that the response is expected to be an error response.
@@ -258,13 +277,19 @@ namespace ApiDocs.Validation
 
         /// <summary>
         /// Indicates that a resource is extensible with additional properties that 
-        /// may not be defined in the documtnation.
+        /// may not be defined in the documentation.
         /// </summary>
         [JsonProperty("openType")]
         public bool IsOpenType { get; set; }
 
         [JsonProperty("target")]
         public TargetType Target { get; set; }
+
+        /// <summary>
+        /// Information stored about the resource.
+        /// </summary>
+        [JsonProperty("modification")]
+        public EntityTypeModification Modification { get; set; }
     }
 
     public enum TargetType
